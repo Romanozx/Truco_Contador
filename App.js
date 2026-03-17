@@ -1,10 +1,18 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
 import { useState } from 'react';
 
 export default function App() {
   const [nos, setNos] = useState(0);
   const [eles, setEles] = useState(0);
+
+  function somarNos() {
+    setNos(nos + 1);
+  }
+
+  function somarEles() {
+    setEles(eles + 1);
+  }
 
   return (
     <View style={styles.container}>
@@ -14,11 +22,19 @@ export default function App() {
         <View style={styles.time}>
           <Text style={styles.nome}>Nós</Text>
           <Text style={styles.pontos}>{nos}</Text>
+
+          <TouchableOpacity style={styles.botao} onPress={somarNos}>
+            <Text style={styles.botaoTexto}>+1</Text>
+          </TouchableOpacity>
         </View>
 
         <View style={styles.time}>
           <Text style={styles.nome}>Eles</Text>
           <Text style={styles.pontos}>{eles}</Text>
+
+          <TouchableOpacity style={styles.botao} onPress={somarEles}>
+            <Text style={styles.botaoTexto}>+1</Text>
+          </TouchableOpacity>
         </View>
       </View>
 
@@ -65,5 +81,19 @@ const styles = StyleSheet.create({
     fontSize: 45,
     color: '#22c55e',
     marginVertical: 10,
+  },
+
+  botao: {
+    backgroundColor: '#2563eb',
+    padding: 10,
+    marginTop: 10,
+    borderRadius: 6,
+    width: 80,
+    alignItems: 'center',
+  },
+
+  botaoTexto: {
+    color: '#fff',
+    fontWeight: 'bold',
   },
 });
