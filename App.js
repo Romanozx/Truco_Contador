@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View, TouchableOpacity } from 'react-native';
+import { StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native';
 import { useState } from 'react';
 
 export default function App() {
@@ -35,7 +35,12 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.titulo}>🃏 Truco Score</Text>
+      <View style={styles.logoContainer}>
+        <Image
+          source={require('./assets/logunipar.png')}
+          style={styles.logo}
+        />
+      </View>
 
       <View style={styles.placar}>
         <View style={styles.time}>
@@ -99,58 +104,67 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#0f172a',
+    backgroundColor: '#ffffff',
     alignItems: 'center',
-    justifyContent: 'center',
+    justifyContent: 'flex-start',
+    paddingTop: 60,
   },
 
-  titulo: {
-    fontSize: 30,
-    color: '#fff',
-    marginBottom: 30,
-    fontWeight: 'bold',
+  logoContainer: {
+    width: '100%',
+    alignItems: 'center',
+    marginBottom: 10,
+  },
+
+  logo: {
+    width: 200,
+    height: 90,
+    resizeMode: 'contain',
   },
 
   placar: {
     flexDirection: 'row',
-    gap: 30,
+    gap: 40,
+    marginTop: 20,
   },
 
   time: {
-    backgroundColor: '#1e293b',
+    backgroundColor: '#ffffff',
     padding: 20,
     borderRadius: 10,
     alignItems: 'center',
   },
 
   nome: {
-    color: '#fff',
+    color: '#000000',
     fontSize: 22,
     fontWeight: 'bold',
   },
 
   pontos: {
-    fontSize: 45,
-    color: '#22c55e',
+    fontSize: 55,
+    color: '#6d0ca5',
     marginVertical: 10,
+    fontWeight: 'bold',
   },
 
   vitoria: {
-    color: '#fff',
+    color: '#050505',
     marginBottom: 10,
+    fontSize: 16,
   },
 
   botao: {
-    backgroundColor: '#2563eb',
-    padding: 10,
-    marginTop: 5,
-    borderRadius: 6,
-    width: 110,
+    backgroundColor: '#5d08a3',
+    padding: 12,
+    marginTop: 6,
+    borderRadius: 10,
+    width: 120,
     alignItems: 'center',
   },
 
   botaoTexto: {
-    color: '#fff',
+    color: '#ffffff',
     fontWeight: 'bold',
   },
 });
