@@ -6,12 +6,12 @@ export default function App() {
   const [nos, setNos] = useState(0);
   const [eles, setEles] = useState(0);
 
-  function somarNos() {
-    setNos(nos + 1);
+  function marcarNos(valor) {
+    setNos(nos + valor);
   }
 
-  function somarEles() {
-    setEles(eles + 1);
+  function marcarEles(valor) {
+    setEles(eles + valor);
   }
 
   return (
@@ -19,12 +19,29 @@ export default function App() {
       <Text style={styles.titulo}>🃏 Truco Score</Text>
 
       <View style={styles.placar}>
+
         <View style={styles.time}>
           <Text style={styles.nome}>Nós</Text>
           <Text style={styles.pontos}>{nos}</Text>
 
-          <TouchableOpacity style={styles.botao} onPress={somarNos}>
+          <TouchableOpacity style={styles.botao} onPress={() => marcarNos(1)}>
             <Text style={styles.botaoTexto}>+1</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={() => marcarNos(3)}>
+            <Text style={styles.botaoTexto}>Truco (3)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={() => marcarNos(6)}>
+            <Text style={styles.botaoTexto}>Seis (6)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={() => marcarNos(9)}>
+            <Text style={styles.botaoTexto}>Nove (9)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={() => marcarNos(12)}>
+            <Text style={styles.botaoTexto}>Doze (12)</Text>
           </TouchableOpacity>
         </View>
 
@@ -32,10 +49,27 @@ export default function App() {
           <Text style={styles.nome}>Eles</Text>
           <Text style={styles.pontos}>{eles}</Text>
 
-          <TouchableOpacity style={styles.botao} onPress={somarEles}>
+          <TouchableOpacity style={styles.botao} onPress={() => marcarEles(1)}>
             <Text style={styles.botaoTexto}>+1</Text>
           </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={() => marcarEles(3)}>
+            <Text style={styles.botaoTexto}>Truco (3)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={() => marcarEles(6)}>
+            <Text style={styles.botaoTexto}>Seis (6)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={() => marcarEles(9)}>
+            <Text style={styles.botaoTexto}>Nove (9)</Text>
+          </TouchableOpacity>
+
+          <TouchableOpacity style={styles.botao} onPress={() => marcarEles(12)}>
+            <Text style={styles.botaoTexto}>Doze (12)</Text>
+          </TouchableOpacity>
         </View>
+
       </View>
 
       <StatusBar style="auto" />
@@ -68,7 +102,6 @@ const styles = StyleSheet.create({
     padding: 20,
     borderRadius: 10,
     alignItems: 'center',
-    width: 130,
   },
 
   nome: {
@@ -86,9 +119,9 @@ const styles = StyleSheet.create({
   botao: {
     backgroundColor: '#2563eb',
     padding: 10,
-    marginTop: 10,
+    marginTop: 5,
     borderRadius: 6,
-    width: 80,
+    width: 110,
     alignItems: 'center',
   },
 
