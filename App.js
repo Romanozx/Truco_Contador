@@ -6,12 +6,31 @@ export default function App() {
   const [nos, setNos] = useState(0);
   const [eles, setEles] = useState(0);
 
+  const [vNos, setVNos] = useState(0);
+  const [vEles, setVEles] = useState(0);
+
   function marcarNos(valor) {
-    setNos(nos + valor);
+    const total = nos + valor;
+
+    if (total >= 12) {
+      setVNos(vNos + 1);
+      setNos(0);
+      setEles(0);
+    } else {
+      setNos(total);
+    }
   }
 
   function marcarEles(valor) {
-    setEles(eles + valor);
+    const total = eles + valor;
+
+    if (total >= 12) {
+      setVEles(vEles + 1);
+      setNos(0);
+      setEles(0);
+    } else {
+      setEles(total);
+    }
   }
 
   return (
@@ -19,10 +38,10 @@ export default function App() {
       <Text style={styles.titulo}>🃏 Truco Score</Text>
 
       <View style={styles.placar}>
-
         <View style={styles.time}>
           <Text style={styles.nome}>Nós</Text>
           <Text style={styles.pontos}>{nos}</Text>
+          <Text style={styles.vitoria}>Vitórias: {vNos}</Text>
 
           <TouchableOpacity style={styles.botao} onPress={() => marcarNos(1)}>
             <Text style={styles.botaoTexto}>+1</Text>
@@ -48,6 +67,7 @@ export default function App() {
         <View style={styles.time}>
           <Text style={styles.nome}>Eles</Text>
           <Text style={styles.pontos}>{eles}</Text>
+          <Text style={styles.vitoria}>Vitórias: {vEles}</Text>
 
           <TouchableOpacity style={styles.botao} onPress={() => marcarEles(1)}>
             <Text style={styles.botaoTexto}>+1</Text>
@@ -69,7 +89,6 @@ export default function App() {
             <Text style={styles.botaoTexto}>Doze (12)</Text>
           </TouchableOpacity>
         </View>
-
       </View>
 
       <StatusBar style="auto" />
@@ -114,6 +133,11 @@ const styles = StyleSheet.create({
     fontSize: 45,
     color: '#22c55e',
     marginVertical: 10,
+  },
+
+  vitoria: {
+    color: '#fff',
+    marginBottom: 10,
   },
 
   botao: {
